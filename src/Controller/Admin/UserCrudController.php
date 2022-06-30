@@ -7,10 +7,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -24,8 +25,14 @@ class UserCrudController extends AbstractCrudController
     {
         return [
             TextField::new('username'),
-            TextField::new('email'),
-            TextField::new('password'),
+            EmailField::new('email'),
+            TextField::new('password')->hideOnIndex(),
+            ArrayField::new('roles'),
+            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm()->hideOnIndex(),
+            DateTimeField::new('deletedAt')->hideOnForm()->hideOnIndex(),
+            BooleanField::new('isValid'),
+
         ];
     }
 
