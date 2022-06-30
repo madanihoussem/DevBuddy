@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ContactRepository;
+use DateTimeImmutable;
+use DateTimeZone;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
@@ -26,6 +28,14 @@ class Contact
 
     #[ORM\Column(type: 'text')]
     private $message;
+
+    #[ORM\Column(type: 'datetime_immutable')]
+    private $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTimeImmutable("now", new DateTimeZone("Europe/Paris"));
+    }
 
     public function getId(): ?int
     {
@@ -76,6 +86,18 @@ class Contact
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
