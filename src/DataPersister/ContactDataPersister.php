@@ -29,7 +29,7 @@ class ContactDataPersister implements ContextAwareDataPersisterInterface
       	if (($context["collection_operation_name"] ?? null ) == "post"){
         	$email = (new Email())
                 ->from('admin@devbuddy.org')
-                ->to($data->getEmail())
+                ->to('madanihoussem98@gmail.com')
                 ->subject($data->getObjet())
                 ->text('Sending emails is fun again!')
                 ->html('<p>See Twig integration for better HTML integration!</p>');
