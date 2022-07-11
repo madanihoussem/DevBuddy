@@ -16,7 +16,7 @@ jobs:
           sudo apt update && sudo apt install sshpass
       - name: GIT CONFIG
         run: 
-          git config --global user.name "madanihoussem" && git config --global user.email "madanihoussem98@gmail.com" && git remote set-url origin https://github.com/madanihoussem/DevBuddy.git https://madanihoussem:{{secrets.APP_PASS}}@github.com/madanihoussem/DevBuddy.git
+          git config --global user.name "madanihoussem" && git config --global user.email "madanihoussem98@gmail.com" && git remote set-url origin git@github.com:madanihoussem/DevBuddy.git
       - name: test pwd
         run:
           sshpass -e ssh  u98339934@access795565821.webspace-data.io
