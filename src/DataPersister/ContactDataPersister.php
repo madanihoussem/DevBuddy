@@ -5,8 +5,8 @@ use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use App\Entity\Contact;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 class ContactDataPersister implements ContextAwareDataPersisterInterface
 {
@@ -27,13 +27,28 @@ class ContactDataPersister implements ContextAwareDataPersisterInterface
     public function persist($data, array $context = [])
     {
       	if (($context["collection_operation_name"] ?? null ) == "post"){
-        	$email = (new Email())
-                ->from('admin@devbuddy.org')
-                ->to('madanihoussem98@gmail.com')
-                ->subject($data->getObjet())
-                ->text('Sending emails is fun again!')
-                ->html('<p>See Twig integration for better HTML integration!</p>');
+            $email = (new TemplatedEmail())
+                ->from('madanihoussem98@gmail.com')
+                ->to($data->getEmail())
+                ->subject("Confirmation e-mail - DevBuddy")
+                // ->html('<p>See Twig integration for better HTML integration!</p>');
+                ->htmlTemplate('emails/confirmationEmail.html.twig')
+                ->context(['nom' => $data->getNom() ? $data->getNom() : null,])
+            ;
             $this->mailer->send($email);
+            $notification = (new TemplatedEmail())
+                ->from($data->getEmail())
+                ->to('madanihoussem98@gmail.com')
+                ->subject("New contact message - DevBuddy")
+                // ->html('<p>See Twig integration for better HTML integration!</p>');
+                ->htmlTemplate('emails/notificationContact.html.twig')
+                ->context([
+                    'address' => $data->getEmail(),
+                    'object' => $data->getObjet(),
+                    'message' => $data->getMessage(),
+                ])
+            ;
+            $this->mailer->send($notification);
         }
         
         $this->entityManager->persist($data);

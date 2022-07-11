@@ -32,6 +32,7 @@ class UserCrudController extends AbstractCrudController
             DateTimeField::new('updatedAt')->hideOnForm()->hideOnIndex(),
             DateTimeField::new('deletedAt')->hideOnForm()->hideOnIndex(),
             BooleanField::new('isValid'),
+            BooleanField::new('isVerified'),
 
         ];
     }

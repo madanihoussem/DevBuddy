@@ -24,6 +24,7 @@
         "symfony/expression-language": "6.0.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.0.*",
+        "symfony/google-mailer": "6.0.*",
         "symfony/mailer": "^6.0",
         "symfony/mime": "6.0.*",
         "symfony/property-access": "6.0.*",
@@ -34,7 +35,8 @@
         "symfony/serializer": "6.0.*",
         "symfony/twig-bundle": "6.0.*",
         "symfony/validator": "6.0.*",
-        "symfony/yaml": "6.0.*"
+        "symfony/yaml": "6.0.*",
+        "symfonycasts/verify-email-bundle": "^1.10"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",

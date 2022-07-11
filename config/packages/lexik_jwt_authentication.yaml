@@ -7,4 +7,4 @@ lexik_jwt_authentication:
     token_extractors:
         query_parameter:
             enabled: true
-            name:    bearer
+            name: bearer

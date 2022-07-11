@@ -1,21 +1,71 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Register - DevBuddy's{% endblock %}
-
+{% block title %}Register{% endblock %}
+{% block stylesheets %}
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+        .form-signup {
+            max-width: 330px;
+            padding: 15px;
+        }
+        .form-signup .form-floating:focus-within {
+            z-index: 2;
+        }
+        .form-signup input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .form-signup input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        .btn-adiate{
+            background: #136E7C;
+            border: #136E7C;
+            color: white;
+        }
+        .btn-adiate:hover{
+            background: #136e7cdc;
+            border: #136E7Cdc;
+            color: white;
+        }
+    </style>
+{% endblock %}
 {% block body %}
-    <div class="container">
-        
-        <h1>Register</h1>
-        
+    <main class="form-signup w-100 m-auto text-center">
+        {# <img src="{{ asset('assets/image/adiate_logo.svg') }}" alt="" width="200" height="150"> #}
+        <h1 class="mb-4">Register</h1>
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
         {{ form_start(registrationForm) }}
-            {{ form_row(registrationForm.email) }}
-            {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
-            }) }}
-            {{ form_row(registrationForm.agreeTerms) }}
-        
-            <button type="submit" class="btn btn-primary">Register</button>
+            {# {{ form_label(registrationForm.nom) }}<br> #}
+            {# {{ form_widget(registrationForm.nom) }}<br> #}
+            {# {{ form_label(registrationForm.prenom) }}<br> #}
+            {{ form_widget(registrationForm.username) }}<br>
+            {# {{ form_label(registrationForm.email) }}<br> #}
+            {{ form_widget(registrationForm.email) }}<br>
+            {# {{ form_label(registrationForm.plainPassword) }}<br> #}
+            {{ form_widget(registrationForm.plainPassword.first) }}<br>
+            {{ form_widget(registrationForm.plainPassword.second) }}
+            {# {{ form_widget(registrationForm.captcha) }} #}
+            <div class="checkbox my-3">
+                {{ form_widget(registrationForm.agreeTerms) }}
+                {{ form_label(registrationForm.agreeTerms) }}
+            </div>    
+            <button type="submit" class="w-100 btn btn-lg btn-adiate">Sing Up</button>
+            <p class="mt-2 text-muted">You already have an account ? <br> Sign In <a href="{{path('app_login')}}">here</a> or <a href="{{path('app_home')}}">Back to website</a></p>
         {{ form_end(registrationForm) }}
-        
-    </div>
+    </main>
 {% endblock %}
