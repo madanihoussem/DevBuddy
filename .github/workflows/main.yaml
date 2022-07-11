@@ -19,7 +19,7 @@ jobs:
           git config --global user.name "madanihoussem" && git config --global user.email "madanihoussem98@gmail.com" && git remote set-url origin git@github.com:madanihoussem/DevBuddy.git
       - name: test pwd
         run:
-          sshpass -e ssh  u98339934@access795565821.webspace-data.io &&
+          sshpass -e ssh -tt u98339934@access795565821.webspace-data.io &&
           "cd clickandbuilds/DevBuddy && 
           git pull &&
           composer install &&
