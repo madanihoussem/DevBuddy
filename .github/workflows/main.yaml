@@ -16,7 +16,9 @@ jobs:
           sudo apt update && sudo apt install sshpass
       - name: test pwd
         run:
-          sshpass -e ssh -o stricthostchecking=no ${{secrets.APP_USER}}@${{secrets.APP_HOST}}
-          "git pull &&
+          git
+          sshpass -e ssh -o stricthostkeychecking=no ${{secrets.APP_USER}}@${{secrets.APP_HOST}}
+          "cd clickandbuilds/DevBuddy &&
+          git pull &&
           composer install &&
           php bin/console d:m:m -n"
