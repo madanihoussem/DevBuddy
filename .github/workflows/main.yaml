@@ -21,7 +21,7 @@ jobs:
           git remote set-url origin git@github.com:madanihoussem/DevBuddy.git
       - name: test deploy
         run:
-          sshpass -e ssh -tt -o stricthostkeychecking=no u98339934@access795565821.webspace-data.io &&
+          sshpass -e ssh -o stricthostkeychecking=no u98339934@access795565821.webspace-data.io &&
           "cd clickandbuilds/DevBuddy &&  
           git config --global user.name "madanihoussem" && 
           git config --global user.email "madanihoussem98@gmail.com" && 
