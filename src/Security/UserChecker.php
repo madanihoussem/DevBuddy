@@ -19,10 +19,10 @@ class UserChecker implements UserCheckerInterface
             throw new CustomUserMessageAccountStatusException("Plz check your email to confirm ur email address!");
         }
 
-        // if (!$user->isValid()) {
-        //     // the message passed to this exception is meant to be displayed to the user
-        //     throw new CustomUserMessageAccountStatusException("Votre compte est en attente de validation.");
-        // }
+        if (!$user->isValid()) {
+            // the message passed to this exception is meant to be displayed to the user
+            throw new CustomUserMessageAccountStatusException("Plz contact your Admin to confirm ur email address!");
+        }
     }
 
     public function checkPostAuth(UserInterface $user): void
