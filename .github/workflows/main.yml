@@ -11,10 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: APT UPDATE and INSTALL SSHPASS
-        run: 
-          sudo apt update && sudo apt install sshpass
-          
       - name: FTP/SFTP file deployer
         # You may pin to the exact commit or the version.
         # uses: milanmk/actions-file-deployer@58030c10c50a8577d08cef33e47c23bcbbf78c33
