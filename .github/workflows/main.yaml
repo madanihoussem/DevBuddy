@@ -25,7 +25,7 @@ jobs:
           "cd clickandbuilds/DevBuddy &&  
           git config --global user.name "madanihoussem" && 
           git config --global user.email "madanihoussem98@gmail.com" && 
-          git remote set-url origin git@github.com:madanihoussem/DevBuddy.git
+          git remote set-url origin git@github.com:madanihoussem/DevBuddy.git &&
           git pull &&
           composer install &&
           php bin/console d:m:m -n"
