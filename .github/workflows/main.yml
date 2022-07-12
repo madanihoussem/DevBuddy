@@ -69,5 +69,5 @@ jobs:
           # Remote path on host
           remote-path: /clickandbuilds/DevBuddy
           # File synchronization (delta, full)
-          sync: delta
+          sync: full
           
