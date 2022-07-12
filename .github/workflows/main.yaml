@@ -23,8 +23,8 @@ jobs:
         run:
           sshpass -e ssh -o stricthostkeychecking=no u98339934@access795565821.webspace-data.io  && 
           pwd &&
-          git config --global user.name "madanihoussem" &&
-          git config --global user.email "madanihoussem98@gmail.com" &&
-          git remote set-url origin git@github.com:madanihoussem/DevBuddy.git &&
-          git pull &&
-          pwd
+          # git config --global user.name "madanihoussem" &&
+          # git config --global user.email "madanihoussem98@gmail.com" &&
+          # git remote set-url origin git@github.com:madanihoussem/DevBuddy.git &&
+          # git pull &&
+          # pwd
