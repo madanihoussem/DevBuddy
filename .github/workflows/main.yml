@@ -23,13 +23,13 @@ jobs:
           # Remote file transfer protocol (ftp, sftp)
           remote-protocol: sftp
           # Remote host
-          remote-host: access795565821.webspace-data.io
+          remote-host: ${{secrets.APP_HOST}}
           # Remote port
           remote-port: 22
           # FTP/SSH username
-          remote-user: u98339934
+          remote-user: ${{secrets.APP_USER}}
           # FTP/SSH password
-          remote-password: HouMar@21! 
+          remote-password: ${{secrets.APP_PASS}}
           # Enable proxy for FTP connection (true, false)
           proxy: false
           # Local path to repository
