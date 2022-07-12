@@ -24,7 +24,7 @@ jobs:
           sshpass -e ssh -o stricthostkeychecking=no u98339934@access795565821.webspace-data.io
       - name: Access repo
         run:
-          cd clickandbuilds/DevBuddy
+          ls
       - name: git config in the repo
         run:
           git config --global user.name "madanihoussem" &&
