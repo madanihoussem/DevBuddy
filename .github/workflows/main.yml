@@ -30,18 +30,44 @@ jobs:
           #local: .
           #remote: /clickandbuilds/DevBuddy
           
-      - name: SFTP Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
+      #- name: SFTP Deploy
+       # uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        #with:
           # username
-          username: u98339934
+         # username: u98339934
           # your sftp server
-          server: access795565821.webspace-data.io
+          #server: access795565821.webspace-data.io
           # your sftp server port, default to 22
-          port: 22
+          #port: 22
           # you can copy private_key from your *.pem file, keep format
-          ssh_private_key: ${{ secrets.PRIVATE_KEY }}
+          #ssh_private_key: ${{ secrets.PRIVATE_KEY }}
           # will put all file under this path
-          local_path: .
+          #local_path: .
           # files will copy to under remote_path
-          remote_path: /clickandbuilds/DevBuddy
+          #remote_path: /clickandbuilds/DevBuddy
+          
+          
+      - name: FTP/SFTP file deployer
+        # You may pin to the exact commit or the version.
+        # uses: milanmk/actions-file-deployer@58030c10c50a8577d08cef33e47c23bcbbf78c33
+        uses: milanmk/actions-file-deployer@1.11
+        with:
+          # Remote file transfer protocol (ftp, sftp)
+          remote-protocol: sftp
+          # Remote host
+          remote-host: access795565821.webspace-data.io
+          # Remote port
+          remote-port: 22
+          # FTP/SSH username
+          remote-user: u98339934
+          # FTP/SSH password
+          remote-password: HouMar@21! 
+          # Enable proxy for FTP connection (true, false)
+          proxy: false
+          # Local path to repository
+          local-path: .
+          # Remote path on host
+          remote-path: /clickandbuilds/DevBuddy
+          # File synchronization (delta, full)
+          sync: delta
+          
