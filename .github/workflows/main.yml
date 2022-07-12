@@ -14,38 +14,6 @@ jobs:
       - name: APT UPDATE and INSTALL SSHPASS
         run: 
           sudo apt update && sudo apt install sshpass
-      
-     # - name: SFTP Sync
-      #  uses: swillner/sftp-sync-action@v1.0
-       # with:
-       #   server: access795565821.webspace-data.io
-        #  port: 22
-         # user: u98339934
-          #password: ${{ secrets.APP_HOST }}
-          # Private SSH key for user (include via secrets if possible)
-          #user_private_key: ${{ secrets.PRIVATE_KEY }}
-          # Public SSH key of host
-          #host_public_key: ${{ secrets.PUBLIC_KEY }} 
-          
-          #local: .
-          #remote: /clickandbuilds/DevBuddy
-          
-      #- name: SFTP Deploy
-       # uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        #with:
-          # username
-         # username: u98339934
-          # your sftp server
-          #server: access795565821.webspace-data.io
-          # your sftp server port, default to 22
-          #port: 22
-          # you can copy private_key from your *.pem file, keep format
-          #ssh_private_key: ${{ secrets.PRIVATE_KEY }}
-          # will put all file under this path
-          #local_path: .
-          # files will copy to under remote_path
-          #remote_path: /clickandbuilds/DevBuddy
-          
           
       - name: FTP/SFTP file deployer
         # You may pin to the exact commit or the version.
