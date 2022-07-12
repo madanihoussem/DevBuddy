@@ -1,0 +1,18 @@
+- pipeline: "deploy"
+  on: "EVENT"
+  events:
+  - type: "PUSH"
+    refs:
+    - "refs/heads/master"
+  priority: "NORMAL"
+  fail_on_prepare_env_warning: true
+  actions:
+  - action: "Upload files to access795565821.webspace-data.io"
+    type: "SFTP"
+    input_type: "SCM_REPOSITORY"
+    remote_path: "/clickandbuilds/DevBuddy"
+    login: "u98339934"
+    password: "secure!XlcNotqcq8LsJ7gaha3bEg==.Od3Zc/jcs6HB7L1IV7RpqQ=="
+    host: "access795565821.webspace-data.io"
+    port: "22"
+    authentication_mode: "PASS"
