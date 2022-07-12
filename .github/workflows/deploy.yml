@@ -32,7 +32,7 @@ jobs:
         with:
           username: 'u98339934'
           server: 'access795565821.webspace-data.io'
-          # ssh_private_key: ${{ secrets.SSH_KEY }} 
+          ssh_private_key: ${{ secrets.SSH_KEY }} 
           password: "secure!XlcNotqcq8LsJ7gaha3bEg==.Od3Zc/jcs6HB7L1IV7RpqQ=="
           authentication_mode: "PASS"
           local_path: '.'
