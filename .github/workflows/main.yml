@@ -21,11 +21,11 @@ jobs:
           server: access795565821.webspace-data.io
           port: 22
           user: u98339934
+          password: ${{ secrets.APP_HOST }}
           # Private SSH key for user (include via secrets if possible)
           user_private_key: ${{ secrets.PRIVATE_KEY }}
           # Public SSH key of host
           host_public_key: ${{ secrets.PUBLIC_KEY }} 
-          # Local path to sync (default: .)
+          
           local: .
-          # Path on server (default: .)
           remote: /clickandbuilds/DevBuddy
