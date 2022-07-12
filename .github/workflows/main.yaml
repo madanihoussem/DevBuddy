@@ -22,8 +22,16 @@ jobs:
       - name: Access Server and pull request
         run:
           ssh -o stricthostkeychecking=no u98339934@access795565821.webspace-data.io &&
+      - name: Access repo
+        run:
           cd clickandbuilds/DevBuddy
+      - name: git config in the repo
+        run:
           git config --global user.name "madanihoussem"
           git config --global user.email "madanihoussem98@gmail.com"
+      - name: Remote
+        run:
           git remote set-url origin git@github.com:madanihoussem/DevBuddy.git
+      - name: Pull request
+        run:
           git pull
