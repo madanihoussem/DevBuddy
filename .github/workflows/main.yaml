@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: APT UPDATE and INSTALL SSHPASS
         run: 
+          pwd &&
           sudo apt update && sudo apt install sshpass
       - name: GIT CONFIG
         run: 
@@ -21,7 +22,7 @@ jobs:
           git remote set-url origin git@github.com:madanihoussem/DevBuddy.git
       - name: Access Server and pull request
         run:
-          sshpass -e ssh -o stricthostkeychecking=no u98339934@access795565821.webspace-data.io  && 
+          ssh -o stricthostkeychecking=no u98339934@access795565821.webspace-data.io  && 
           pwd
       # - name: git config in the repo
       #   run:
