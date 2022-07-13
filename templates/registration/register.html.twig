@@ -1,46 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}Register{% endblock %}
 {% block stylesheets %}
-    <style>
-        html,
-        body {
-            height: 100%;
-        }
-        body {
-            display: flex;
-            align-items: center;
-            padding-top: 40px;
-            padding-bottom: 40px;
-            background-color: #f5f5f5;
-        }
-        .form-signup {
-            max-width: 330px;
-            padding: 15px;
-        }
-        .form-signup .form-floating:focus-within {
-            z-index: 2;
-        }
-        .form-signup input[type="email"] {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-        .form-signup input[type="password"] {
-            margin-bottom: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-        .btn-adiate{
-            background: #136E7C;
-            border: #136E7C;
-            color: white;
-        }
-        .btn-adiate:hover{
-            background: #136e7cdc;
-            border: #136E7Cdc;
-            color: white;
-        }
-    </style>
+        <link href="{{ asset('assets/css/connexion.css') }}" rel="stylesheet" />
 {% endblock %}
 {% block body %}
     <main class="form-signup w-100 m-auto text-center">

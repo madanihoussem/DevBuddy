@@ -10,15 +10,14 @@
 
 <div class="example-wrapper">
     <h1>Contact ! ✅</h1>
-
     {{ form_start(contactForm) }}
-            {# {{ form_row(registrationForm.email) }}
-            {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
-            }) }}
-            {{ form_row(registrationForm.agreeTerms) }} #}
-            {{ form(contactForm) }}
-            <button type="submit" class="btn btn-primary">Submit</button>
-        {{ form_end(contactForm) }}
+        {# {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }} #}
+        {{ form(contactForm) }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    {{ form_end(contactForm) }}
 </div>
 {% endblock %}
