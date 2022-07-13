@@ -30,7 +30,7 @@ class HomeController extends AbstractController
                 ->htmlTemplate('emails/confirmationEmail.html.twig')
                 ->context(['nom' => $contact->getNom() ? $contact->getNom() : null,])
             ;
-            $this->mailer->send($email);
+            $mailer->send($email);
             $notification = (new TemplatedEmail())
                 ->from($contact->getEmail())
                 ->to('madanihoussem98@gmail.com')
@@ -43,7 +43,7 @@ class HomeController extends AbstractController
                     'message' => $contact->getMessage(),
                 ])
             ;
-            $this->mailer->send($notification);
+            $mailer->send($notification);
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render('home/index.html.twig', [
