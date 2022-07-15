@@ -21,6 +21,7 @@ class Contact
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Assert\Regex(pattern:"/^[a-z ,.'-]+$/i", message: "The name '{{ value }}' is not a valid full name.")]
+    #[Assert\NotBlank()]
     private $nom;///^[a-z ,.'-]+$/i
 
     #[ORM\Column(type: 'string', length: 255)]
