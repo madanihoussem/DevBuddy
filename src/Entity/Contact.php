@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ContactRepository;
+use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 use DateTimeZone;
-use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 #[ApiResource]
@@ -15,22 +16,33 @@ class Contact
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Assert\NotBlank()]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $nom;
+    #[Assert\Regex(pattern:"/^[a-z ,.'-]+$/i", message: "The name '{{ value }}' is not a valid full name.")]
+    private $nom;///^[a-z ,.'-]+$/i
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Email(message: "The email '{{ value }}' is not a valid email.")]
+    #[Assert\Regex(pattern:"/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i")]
+    #[Assert\NotBlank()]
     private $email;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\NotBlank]
     private $objet;
 
     #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank()]
     private $message;
 
     #[ORM\Column(type: 'datetime_immutable')]
     private $createdAt;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank]
+    private ?string $telephone = null;
 
     public function __construct()
     {
@@ -98,6 +110,18 @@ class Contact
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(?string $telephone): self
+    {
+        $this->telephone = $telephone;
 
         return $this;
     }
