@@ -177,8 +177,14 @@
                         {{ form_widget(contactForm.message) }}
                         {{ form_errors(contactForm.agreeTerms) }}
                         {{ form_widget(contactForm.agreeTerms) }}
+                        {# <div class="g-recaptcha" data-sitekey="6LfzpvwgAAAAAIa2-Hn3dlCyWTvTaWCRbf7P2IDO"></div> #}
                         {# {{ form(contactForm) }} #}
-                        <div class="d-grid mt-3"><button class="btn btn-primary btn-xl" id="submitButton" type="submit">Submit</button></div>
+                        <div class="d-grid mt-3"><button class="btn btn-primary btn-xl g-recaptcha" data-sitekey="6LeKr_wgAAAAACQ_vcJ1ITp5lJlvWGT4HBP-nJ3W" data-callback="onSubmit" id="submitButton" type="submit">Submit</button></div>
+                        <div class="g-recaptcha"
+      data-sitekey="_your_site_key_"
+      data-callback="onSubmit"
+      data-size="invisible">
+</div>
                         {# <button type="submit" class="btn btn-primary">Submit</button> #}
                     {{ form_end(contactForm) }}
                     {# <form id="contactForm">
@@ -247,4 +253,7 @@
     <footer class="bg-light py-5">
         <div class="container px-4 px-lg-5"><div class="fs-4 text-center">Copyright &copy; 2022 - DevBuddy</div></div>
     </footer>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}
