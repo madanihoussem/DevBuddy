@@ -3,7 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Contact;
+use App\Entity\Newsletter;
 use App\Entity\User;
+use App\Repository\ContactRepository;
+use App\Repository\NewsletterRepository;
+use App\Repository\UserRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -13,6 +17,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
+
+    public function __construct(UserRepository $userRepository, ContactRepository $contactRepository, NewsletterRepository $newsletterRepository)
+    {
+        $this->userRepository = $userRepository;
+        $this->contactRepository = $contactRepository;
+        $this->newsletterRepository = $newsletterRepository;
+
+    }
     #[Route('/admin1', name: 'admin')]
     public function index(): Response
     {
@@ -43,8 +55,10 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        
         yield MenuItem::linkToRoute('WebSite', 'fa fa-home', 'app_home');
-        yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
-        yield MenuItem::linkToCrud('Contacts', 'fas fa-message', Contact::class);
+        yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class)->setBadge(count($this->userRepository->findAll()));
+        yield MenuItem::linkToCrud('Contacts', 'fas fa-message', Contact::class)->setBadge(count($this->contactRepository->findAll()));
+        yield MenuItem::linkToCrud('Newsletters', 'fa-solid fa-at', Newsletter::class)->setBadge(count($this->newsletterRepository->findAll()));
     }
 }
