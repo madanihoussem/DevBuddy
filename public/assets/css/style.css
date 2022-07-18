@@ -1,10 +1,5 @@
 @charset "UTF-8";
-.rc-anchor-content{
-  display: none!important;
-}
-.rc-anchor-container{
-  background: transparent!important;
-}
+
 .btn-adiate {
     background: #136E7C;
     border: #136E7C;
