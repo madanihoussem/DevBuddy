@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,13 +23,17 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('username', TextType::class, [
                 'attr' => [
-                    'placeholder' => "Username"
-                ]
+                    'placeholder' => "Username",
+                    'class' => 'form-floating rounded',
+                ],
+                'required' => false,
             ])
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'placeholder' => "Email"
-                ]
+                    'class' => 'form-floating rounded',
+                    'placeholder' => "Email",
+                ],
+                'required' => false,
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -37,22 +42,28 @@ class RegistrationFormType extends AbstractType
                         'message' => 'You should agree to our terms.',
                     ]),
                 ],
+                'required' => false,
             ])
             ->add('plainPassword', RepeatedType::class, [
                 // instead of being set onto the object directly,
                 'type' => PasswordType::class,
                 "first_options" => [
                     'attr' => [
-                        'placeholder' => "Password"
-                    ]
+                    'class' => 'form-floating mb-0 rounded',
+                    'placeholder' => "Password",
+                    ],
+                    'required' => false,
                 ],
                 "second_options" => [
                     'attr' => [
-                        'placeholder' => "Repeat password"
-                    ]
+                    'class' => 'form-floating mb-0 rounded',
+                    'placeholder' => "Repeat password",
+                    ],
+                    'required' => false,
                 ],
                 // this is read and encoded in the controller
                 'mapped' => false,
+                'required' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([

@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Newsletter;
 use App\Form\ContactFormType;
+use App\Form\NewsletterFormType;
 use App\Repository\ContactRepository;
+use App\Repository\NewsletterRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,18 +18,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(Request $request, ContactRepository $contactRepository, MailerInterface $mailer): Response
+    public function index(Request $request, ContactRepository $contactRepository, MailerInterface $mailer, NewsletterRepository $newsletterRepository): Response
     {
         $contact = new Contact();
-        $form = $this->createForm(ContactFormType::class, $contact);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        $contactForm = $this->createForm(ContactFormType::class, $contact);
+        $contactForm->handleRequest($request);
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
             $contactRepository->add($contact, true);
+            if (count($newsletterRepository->findBy(['email' => $contact->getEmail()])) == 0) {
+                $newsletter = new Newsletter();
+                $newsletter->setEmail($contact->getEmail());
+                $newsletterRepository->add($newsletter, true);
+            }
             $email = (new TemplatedEmail())
                 ->from('madanihoussem98@gmail.com')
                 ->to($contact->getEmail())
                 ->subject("Confirmation e-mail - DevBuddy")
-                // ->html('<p>See Twig integration for better HTML integration!</p>');
                 ->htmlTemplate('emails/confirmationEmail.html.twig')
                 ->context(['nom' => $contact->getNom() ? $contact->getNom() : null,])
             ;
@@ -46,9 +53,17 @@ class HomeController extends AbstractController
             $mailer->send($notification);
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
+        $newsletter = new Newsletter();
+        $newsForm = $this->createForm(NewsletterFormType::class, $newsletter);
+        $newsForm->handleRequest($request);
+        if ($newsForm->isSubmitted() && $newsForm->isValid()) {
+            $newsletterRepository->add($newsletter, true);
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+        }
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'contactForm' => $form->createView(),
+            'contactForm' => $contactForm->createView(),
+            'newsForm' => $newsForm->createView(),
         ]);
     }
 }

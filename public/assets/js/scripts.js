@@ -1,12 +1,3 @@
-/*!
-* Start Bootstrap - Creative v7.0.6 (https://startbootstrap.com/theme/creative)
-* Copyright 2013-2022 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
-
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
@@ -52,8 +43,40 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
     // Activate SimpleLightbox plugin for portfolio items
-    new SimpleLightbox({
-        elements: '#portfolio a.portfolio-box'
-    });
+    // new SimpleLightbox({
+    //     elements: '#portfolio a.portfolio-box'
+    // });
 
 });
+
+// /**
+//    * Easy selector helper function
+//    */
+//  const select = (el, all = false) => {
+//     el = el.trim()
+//     if (all) {
+//       return [...document.querySelectorAll(el)]
+//     } else {
+//       return document.querySelector(el)
+//     }
+//   }
+
+//  /**
+//    * Navbar links active state on scroll
+//    */
+//   let navbarlinks = select('#mainNav .scrollto', true)
+//   const navbarlinksActive = () => {
+//     let position = window.scrollY + 200
+//     navbarlinks.forEach(navbarlink => {
+//       if (!navbarlink.hash) return
+//       let section = select(navbarlink.hash)
+//       if (!section) return
+//       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+//         navbarlink.classList.add('active')
+//       } else {
+//         navbarlink.classList.remove('active')
+//       }
+//     })
+//   }
+//   window.addEventListener('load', navbarlinksActive)
+//   onscroll(document, navbarlinksActive)

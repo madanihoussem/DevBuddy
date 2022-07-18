@@ -2,9 +2,6 @@
 
 {% block title %}Accueil - DevBuddy's
 {% endblock %}
-{% block stylesheets %}
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
-{% endblock %}
 {% block body %}
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -13,11 +10,11 @@
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{path('app_login')}}">{% if app.user %}Dashboard{% else %}Connexion{% endif %}</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto active" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="{{path('app_login')}}">{% if app.user %}Dashboard{% else %}Connexion{% endif %}</a></li>
                 </ul>
             </div>
         </div>
@@ -223,6 +220,29 @@
             </div>
         </div>
     </section>
+    <!--Newsletter-->
+    <section class="page-section bg-primary" id="newletter">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6 text-center">
+                    <h2 class="mt-0 text-white">Stay Updated!</h2>
+                    <hr class="divider divider-light"/>
+                    <p class="text-white-75 mb-5">Sign up to our newsletter and receive information about our services.</p>
+                </div>
+            </div>
+            <div class="row gx-4 gx-lg-5 justify-content-center mb-1">
+                <div class="col-lg-6">
+                    {{ form_start(newsForm, { 'attr' : { 'id': 'contactForm', 'class': 'd-flex justify-content-center' } }) }}
+                        {{ form_errors(newsForm.email) }}
+                        {{ form_widget(newsForm.email) }}
+                        <button class="btn btn-light btn-xl ms-4 mb-3" id="submitButton" type="submit">Subscribe</button>
+                        {# <button type="submit" class="btn btn-primary">Submit</button> #}
+                    {{ form_end(newsForm) }}
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer-->
     <footer class="bg-light py-5">
         <div class="container px-4 px-lg-5"><div class="fs-4 text-center">Copyright &copy; 2022 - DevBuddy</div></div>

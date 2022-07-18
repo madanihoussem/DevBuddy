@@ -14,14 +14,18 @@
             {# {{ form_label(registrationForm.nom) }}<br> #}
             {# {{ form_widget(registrationForm.nom) }}<br> #}
             {# {{ form_label(registrationForm.prenom) }}<br> #}
+            {{ form_errors(registrationForm.username) }}
             {{ form_widget(registrationForm.username) }}<br>
             {# {{ form_label(registrationForm.email) }}<br> #}
+            {{ form_errors(registrationForm.email) }}
             {{ form_widget(registrationForm.email) }}<br>
             {# {{ form_label(registrationForm.plainPassword) }}<br> #}
+            {{ form_errors(registrationForm.plainPassword) }}
             {{ form_widget(registrationForm.plainPassword.first) }}<br>
             {{ form_widget(registrationForm.plainPassword.second) }}
             {# {{ form_widget(registrationForm.captcha) }} #}
             <div class="checkbox my-3">
+                {{ form_errors(registrationForm.agreeTerms) }}
                 {{ form_widget(registrationForm.agreeTerms) }}
                 {{ form_label(registrationForm.agreeTerms) }}
             </div>    

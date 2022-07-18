@@ -16,7 +16,6 @@ class Contact
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Assert\NotBlank()]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
