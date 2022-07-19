@@ -15,7 +15,7 @@ class NewsletterFormType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'class' => 'form-floating mb-3',
+                    'class' => 'form-floating news-control mb-3',
                     'placeholder' => 'Email',
                 ],
             ])

@@ -1768,6 +1768,13 @@ progress {
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(19, 110, 124, 0.474);
 }
+.news-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #fff;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(241, 238, 238, 0.474);
+}
 .form-control::-webkit-date-and-time-value {
   height: 1.5em;
 }
