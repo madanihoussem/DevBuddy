@@ -27,10 +27,14 @@
             <div class="checkbox my-3">
                 {{ form_errors(registrationForm.agreeTerms) }}
                 {{ form_widget(registrationForm.agreeTerms) }}
-                {{ form_label(registrationForm.agreeTerms) }}
+                {{ form_label(registrationForm.agreeTerms) }}<br/>
+                <div class="g-recaptcha" data-sitekey="6LcK0wUhAAAAAEMGACwxTU-T9jR4_nEeXyWp4nxo"></div>
             </div>    
             <button type="submit" class="w-100 btn btn-lg btn-adiate">Sing Up</button>
             <p class="mt-2 text-muted">You already have an account ? <br> Sign In <a href="{{path('app_login')}}">here</a> or <a href="{{path('app_home')}}">Back to website</a></p>
         {{ form_end(registrationForm) }}
     </main>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}
