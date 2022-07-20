@@ -20,8 +20,9 @@
             {{ form_errors(registrationForm.email) }}
             {{ form_widget(registrationForm.email) }}<br>
             {# {{ form_label(registrationForm.plainPassword) }}<br> #}
-            {{ form_errors(registrationForm.plainPassword) }}
+            {{ form_errors(registrationForm.plainPassword.first) }}
             {{ form_widget(registrationForm.plainPassword.first) }}<br>
+            {{ form_errors(registrationForm.plainPassword.second) }}
             {{ form_widget(registrationForm.plainPassword.second) }}
             {# {{ form_widget(registrationForm.captcha) }} #}
             <div class="checkbox my-3">
