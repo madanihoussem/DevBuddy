@@ -34,7 +34,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            dd($request->request->get('g-recaptcha-response') != "");
+            dd($form->isSubmitted() && $form->isValid() && $request->request->get('g-recaptcha-response') != "");
             $user->setRoles(["ROLE_USER"]);
             $user->setPassword(
             $userPasswordHasher->hashPassword(
