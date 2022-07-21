@@ -42,7 +42,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
                 'required' => false,
-                'label' => 'I agree to all the Term, Privacy Policy and Fees.',
+                'label' => 'I agree to all the Term and Privacy Policy.',
                 'label_attr' => [
                     'class' => 'fs-6 text-muted text-start'
                 ]
