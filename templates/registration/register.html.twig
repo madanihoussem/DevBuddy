@@ -11,15 +11,10 @@
             <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
         {% endfor %}
         {{ form_start(registrationForm) }}
-            {# {{ form_label(registrationForm.nom) }}<br> #}
-            {# {{ form_widget(registrationForm.nom) }}<br> #}
-            {# {{ form_label(registrationForm.prenom) }}<br> #}
             {{ form_errors(registrationForm.username) }}
             {{ form_widget(registrationForm.username) }}<br>
-            {# {{ form_label(registrationForm.email) }}<br> #}
             {{ form_errors(registrationForm.email) }}
             {{ form_widget(registrationForm.email) }}<br>
-            {# {{ form_label(registrationForm.plainPassword) }}<br> #}
             {{ form_errors(registrationForm.plainPassword.first) }}
             {{ form_widget(registrationForm.plainPassword.first) }}<br>
             {{ form_errors(registrationForm.plainPassword.second) }}
@@ -28,14 +23,14 @@
             <div class="checkbox my-3">
                 {{ form_errors(registrationForm.agreeTerms) }}
                 {{ form_widget(registrationForm.agreeTerms) }}
-                {{ form_label(registrationForm.agreeTerms) }}<br/>
-                {# <div class="g-recaptcha" data-sitekey="6LcK0wUhAAAAAEMGACwxTU-T9jR4_nEeXyWp4nxo"></div> #}
+                {{ form_label(registrationForm.agreeTerms) }}
+                <div class="g-recaptcha" data-sitekey="6LcK0wUhAAAAAEMGACwxTU-T9jR4_nEeXyWp4nxo"></div>
             </div>    
             <button type="submit" class="w-100 btn btn-lg btn-adiate">Sing Up</button>
             <p class="mt-2 text-muted">You already have an account ? <br> Sign In <a href="{{path('app_login')}}">here</a> or <a href="{{path('app_home')}}">Back to website</a></p>
         {{ form_end(registrationForm) }}
     </main>
 {% endblock %}
-{# {% block javascripts %}
+{% block javascripts %}
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-{% endblock %} #}
+{% endblock %}
