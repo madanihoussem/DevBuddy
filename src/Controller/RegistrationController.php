@@ -33,7 +33,7 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($request);
+            dd($request->request->get('g-recaptcha-response'));
             // encode the plain password
             $user->setRoles(["ROLE_USER"]);
             $user->setPassword(
