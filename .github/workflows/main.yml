@@ -35,12 +35,12 @@ jobs:
           # File synchronization (delta, full)
           sync: full
 
-      - name: Install Composer dependencies
-        run: composer install --no-progress --prefer-dist --optimize-autoloader
+      # - name: Install Composer dependencies
+      #   run: composer install --no-progress --prefer-dist --optimize-autoloader
 
-      - run: composer require symfony/runtime 
+      # - run: composer require symfony/runtime 
 
-      - name: Run Migration && Load Fixtures
-        run: |
-            composer require --dev symfony/orm-pack
-            php bin/console doctrine:schema:update --force
+      # - name: Run Migration && Load Fixtures
+      #   run: |
+      #       composer require --dev symfony/orm-pack
+      #       php bin/console doctrine:schema:update --force
