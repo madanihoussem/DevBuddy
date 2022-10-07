@@ -20,6 +20,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(Request $request, ContactRepository $contactRepository, MailerInterface $mailer, NewsletterRepository $newsletterRepository): Response
     {
+        dump($request);
         $contact = new Contact();
         $contactForm = $this->createForm(ContactFormType::class, $contact);
         $contactForm->handleRequest($request);
