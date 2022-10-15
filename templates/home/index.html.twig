@@ -233,14 +233,12 @@
             </div>
             <div class="row gx-4 gx-lg-5 justify-content-center mb-1">
                 <div class="col-lg-6">
-                    <center>
-                    {{ form_start(newsForm, { 'attr' : { 'id': 'contactForm', 'class': '' } }) }}
+                    {{ form_start(newsForm, { 'attr' : { 'id': 'contactForm', 'class': 'd-flex justify-content-center' } }) }}
                         {{ form_errors(newsForm.email) }}
                         {{ form_widget(newsForm.email) }}
-                        <div class="d-grid mt-3"><button class="btn btn-light btn-xl mb-3" id="submitButton" type="submit">Subscribe</button></div>
+                        <button class="btn btn-light btn-xl ms-4 mb-3" id="submitButton" type="submit">Subscribe</button>
                         {# <button type="submit" class="btn btn-primary">Submit</button> #}
                     {{ form_end(newsForm) }}
-                    </center>
                 </div>
             </div>
         </div>
