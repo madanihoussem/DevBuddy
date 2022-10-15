@@ -16,19 +16,7 @@ use DateTimeZone;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-#[ApiResource(
-    // collectionOperations: [
-    //     "get"/*  => ["security" => "is_granted('ROLE_USER')"] */,
-    //     "post",
-    // ],
-    // itemOperations: [
-    //     "get" => ["security" => "is_granted('ROLE_USER')"],
-    //     "put" => ["security" => "is_granted('ROLE_USER')"],
-    //     "patch" => ["security" => "is_granted('ROLE_USER')"],
-    //     "delete" => ["security" => "is_granted('ROLE_USER')"],
-    // ],
-)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[ApiResource()]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -37,14 +25,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
-    #[Assert\NotBlank()]
     private $email;
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
     #[ORM\Column(type: 'string')]
-    #[Assert\NotBlank()]
     private $password;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]

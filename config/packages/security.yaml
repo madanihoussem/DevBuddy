@@ -49,6 +49,8 @@ security:
         - { path: ^/admin, roles: ROLE_USER }
         - { path: ^/api/(users|contacts)/, roles: ROLE_USER }
         - { path: ^/api/(users|contacts), roles: ROLE_USER , methods: [GET] }
+        - { path: ^/api/newsletters/, roles: ROLE_USER }
+        - { path: ^/api/newsletters, roles: ROLE_USER , methods: [GET] }
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
 
 when@test:
