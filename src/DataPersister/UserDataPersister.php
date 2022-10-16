@@ -26,7 +26,7 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
     {
         return $data instanceof User;
     }
-    public function persist($data, array $context = [])
+    public function persist($data, array $context = []):void
     {
       	if (($context["collection_operation_name"] ?? null ) == "post"){
         	if ($data->getPassword()) {
@@ -63,7 +63,7 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
     }
 
     }
-    public function remove($data, array $context = [])
+    public function remove($data, array $context = []):void
     {
         $this->entityManager->remove($data);
         $this->entityManager->flush();

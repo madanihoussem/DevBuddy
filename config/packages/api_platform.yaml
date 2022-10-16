@@ -14,4 +14,3 @@ api_platform:
     collection:
         # The default order of results.
         order: 'DESC'
-    

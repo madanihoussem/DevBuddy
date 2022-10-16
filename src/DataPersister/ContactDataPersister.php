@@ -24,7 +24,7 @@ class ContactDataPersister implements ContextAwareDataPersisterInterface
     {
         return $data instanceof Contact;
     }
-    public function persist($data, array $context = [])
+    public function persist($data, array $context = []):void
     {
       	if (($context["collection_operation_name"] ?? null ) == "post"){
             $email = (new TemplatedEmail())
@@ -54,7 +54,7 @@ class ContactDataPersister implements ContextAwareDataPersisterInterface
         $this->entityManager->persist($data);
         $this->entityManager->flush();
     }
-    public function remove($data, array $context = [])
+    public function remove($data, array $context = []):void
     {
         $this->entityManager->remove($data);
         $this->entityManager->flush();
