@@ -47,6 +47,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin, roles: ROLE_USER }
+        - { path: ^/administration, roles: ROLE_USER }
         - { path: ^/api/(users|contacts)/, roles: ROLE_USER }
         - { path: ^/api/(users|contacts), roles: ROLE_USER , methods: [GET] }
         - { path: ^/api/newsletters/, roles: ROLE_USER }
