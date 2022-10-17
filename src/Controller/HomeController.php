@@ -31,12 +31,13 @@ class HomeController extends AbstractController
                 $newsletterRepository->add($newsletter, true);
             }
             $email = (new TemplatedEmail())
-                ->from('madanihoussem98@gmail.com')
-                ->to($contact->getEmail())
-                ->subject("Confirmation e-mail - DevBuddy")
-                ->htmlTemplate('emails/confirmationEmail.html.twig')
-                ->context(['nom' => $contact->getNom() ? $contact->getNom() : null,])
+            ->from('madanihoussem98@gmail.com')
+            ->to($contact->getEmail())
+            ->subject("Confirmation e-mail - DevBuddy")
+            ->htmlTemplate('emails/confirmationEmail.html.twig')
+            ->context(['nom' => $contact->getNom() ? $contact->getNom() : null,])
             ;
+            // dd($contact);
             $mailer->send($email);
             $notification = (new TemplatedEmail())
                 ->from($contact->getEmail())
