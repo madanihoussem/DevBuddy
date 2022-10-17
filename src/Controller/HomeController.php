@@ -58,7 +58,9 @@ class HomeController extends AbstractController
         $newsForm = $this->createForm(NewsletterFormType::class, $newsletter);
         $newsForm->handleRequest($request);
         if ($newsForm->isSubmitted() && $newsForm->isValid()) {
-            $newsletterRepository->add($newsletter, true);
+            if (count($newsletterRepository->findBy(['email' => $newsletter->getEmail()])) == 0) {
+                $newsletterRepository->add($newsletter, true);
+            }
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render('home/index.html.twig', [
