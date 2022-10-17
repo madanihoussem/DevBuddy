@@ -25,7 +25,7 @@ class DashboardController extends AbstractDashboardController
         $this->newsletterRepository = $newsletterRepository;
 
     }
-    #[Route('/admin1', name: 'admin')]
+    #[Route('/admin1', name: 'admin1')]
     public function index(): Response
     {
         // return parent::index();
