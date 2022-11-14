@@ -14,7 +14,8 @@ jobs:
       - name: FTP/SFTP file deployer
         # You may pin to the exact commit or the version.
         # uses: milanmk/actions-file-deployer@58030c10c50a8577d08cef33e47c23bcbbf78c33
-        uses: milanmk/actions-file-deployer@1.11 php-actions/composer@v6
+      - uses: milanmk/actions-file-deployer@1.11 
+      - uses: php-actions/composer@v6
         with:
           # Remote file transfer protocol (ftp, sftp)
           remote-protocol: sftp
